@@ -13,7 +13,7 @@
         contain
       >
       </v-img>
-      <v-toolbar-title @click="$router.push('/')" class="ml2" >
+      <v-toolbar-title class="ml2" >
         <span class="display-1 text-uppercase font-weight-medium">ARFiX</span>
         <span class="display-1 text-uppercase font-weight-medium">IT</span>
       </v-toolbar-title>
@@ -28,11 +28,17 @@
         class="ml-n9"
         color="cyan darken-2"
       >
-        <v-tab
-          v-for="link in links"
-          :key="link"
-        >
-          {{ link }}
+        <v-tab @click="$router.push('/about')">
+          About
+        </v-tab>
+        <v-tab @click="$router.push('/')">
+          Home
+        </v-tab>
+        <v-tab @click="$router.push('/login')">
+          Login
+        </v-tab>
+        <v-tab @click="$router.push('/signup')">
+          Sign Up
         </v-tab>
       </v-tabs>
 
@@ -44,47 +50,7 @@
     </v-app-bar>
 
     <v-main class="blue lighten-2">
-      <v-container>
-        <v-row>
-          <v-col
-            cols="12"
-            sm="2"
-          >
-            <v-sheet
-              color="blue lighten-3"
-              rounded="lg"
-              min-height="268"
-            >
-              <!--  -->
-            </v-sheet>
-          </v-col>
-
-          <v-col
-            cols="12"
-            sm="8"
-          >
-            <v-sheet
-              min-height="70vh"
-              rounded="lg"
-            >
-              <!--  -->
-            </v-sheet>
-          </v-col>
-
-          <v-col
-            cols="12"
-            sm="2"
-          >
-            <v-sheet
-              color="blue lighten-3"
-              rounded="lg"
-              min-height="268"
-            >
-              <!--  -->
-            </v-sheet>
-          </v-col>
-        </v-row>
-      </v-container>
+      <router-view/>
     </v-main>
   </v-app>
 </template>
@@ -97,10 +63,10 @@ export default {
 
   data: () => ({
       links: [
-        'Dashboard',
-        'Messages',
-        'Profile',
-        'Updates',
+        'About',
+        'Home',
+        'Login',
+        'Sign Up',
       ],
     }),
 };
