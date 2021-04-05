@@ -10,6 +10,7 @@ Vivek N [PES1201801077]
 ---
 
 The website is present under the Hi-Fi folder and can be run using `npm`.
+
 The Unity VR App APK is present as **vr_demo.apk** and can be downloaded and installed on any Android Device.
 
 ---
