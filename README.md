@@ -1,7 +1,6 @@
 # HCI Project - AR Fix
----
 
-This repository contains code and report for the HCI project by the team consisting of:
+This repository contains code and reports for the HCI project by the team consisting of:
 
 Adhwaith Menon [PES1201800207]  
 Vishnu V Erapalli [PES1201801297]  
