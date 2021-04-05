@@ -31,14 +31,17 @@
         <v-tab @click="$router.push('/about')">
           About
         </v-tab>
-        <v-tab @click="$router.push('/')">
+        <v-tab v-if="isLogged" @click="$router.push('/home')">
           Home
         </v-tab>
-        <v-tab @click="logUser">
+        <v-tab v-if="!isLogged" @click="logUser">
           Login
         </v-tab>
-        <v-tab @click="$router.push('/signup')">
+        <v-tab v-if="!isLogged" @click="$router.push('/signup')">
           Sign Up
+        </v-tab>
+        <v-tab v-if="isLogged" @click="logUserOut">
+          Logout
         </v-tab>
       </v-tabs>
 
@@ -62,15 +65,17 @@ export default {
   name: 'App',
 
   data: () => ({
-    links: [
-      'About',
-      'Home',
-      'Login',
-      'Sign Up',
-    ],
+    isLogged: false
   }),
+  mounted() {
+    this.isLogged = localStorage.logged;
+  },
   methods: {
     logUser() {
+      this.$router.push('/login');
+    },
+    logUserOut() {
+      this.isLogged = false;
       this.$router.push('/login');
     }
   }

@@ -26,7 +26,7 @@
                       <br />
                       <input v-model="password_new" type="password" class="form-control" placeholder="Password Again" required>
                       <br />
-                      <input type="submit" class="btn btn-primary blue" @click="doLogin">
+                      <input type="submit" class="btn btn-primary blue" @click="register">
                     </form>
                   </div>
                 </div>
@@ -44,17 +44,43 @@
 </template>
 
 <script>
+import firebase from 'firebase';
+var firebaseConfig = {
+  apiKey: "AIzaSyCKsV1xObtdWxnervywktTYlao19ygVzzw",
+  authDomain: "hci-project-feed2.firebaseapp.com",
+  projectId: "hci-project-feed2",
+  storageBucket: "hci-project-feed2.appspot.com",
+  messagingSenderId: "1023154970280",
+  appId: "1:1023154970280:web:f69b2829cf5bfd1e0d6c9d",
+  measurementId: "G-682JR5RS41"
+};
+firebase.initializeApp(firebaseConfig);
 // @ is an alias to /src
-
 export default {
-  methods: {
-  },
   name: 'Sign',
   data: () => ({
     email: '',
     password: '',
     password_new: ''
-  })
+  }),
+  created() {
+    firebase.initializeApp(firebaseConfig);
+  },
+  methods: {
+    register: function(){
+      this.$router.push('/login');
+      firebase
+      .auth()
+      .createUserWithEmailAndPassword(this.email, this.password)
+      .then(() => {
+        alert('Successfully registered! Please login.')
+        this.$router.push('/login')
+      })
+      .catch(error => {
+        alert(error.message)
+      });
+    },
+  }
 }
 </script>
 

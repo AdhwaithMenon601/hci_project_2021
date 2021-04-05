@@ -23,7 +23,7 @@
 
                               <div class="submit-buttons">
                                 <input type="submit" value="Connect">
-                                <input type="button" value="Login" class="btn-register">
+                                <input type="button" value="Login" class="btn-register" @click="login">
                               </div>
 
                             </form>
@@ -33,37 +33,7 @@
 
                         <!--    Register    -->
 
-                        <div class="register justify-content-cente animatedr" style="animation-delay:.3s">
-                          <h1 class="form-title "><i class="fas fa-user-plus" style="color:#57efc4;"></i> <br> REGISTER
-                            <hr>
-                          </h1>
-
-                          <div class="form-container animated fadeIn" style="animation-delay:.7s;">
-                            <form>
-
-                              <label for=""><i class="fab fa-amilia"></i> Name </label>
-                              <input type="text" name="name" placeholder="Name" required autofocus>
-
-                              <label for=""><i class="fas fa-at"></i> Email </label>
-                              <input type="email" name="email" placeholder="E-mail">
-
-                              <label for=""><i class="fab fa-slack-hash"></i> Password </label>
-                              <input type="password" name="password" placeholder="Password">
-
-                              <label for=""><i class="fab fa-slack-hash"></i> Confirm Password </label>
-                              <input type="password" name="password_confirmation" placeholder="Password">
-
-                              <div class="submit-buttons">
-                                <input type="submit" value="Register" style="background:#55efc4;">
-                                <input type="button" value="Sign In" class="btn-login">
-                              </div>
-
-                            </form>
-                          </div>
-                        </div>
-
-                        <!--    Register    -->
-
+                        
                         <div class="login animated fadeIn" style="animation-delay:.7s;animation-duration:4s;" id="login-bg"></div>
 
                       </div>
@@ -76,12 +46,29 @@
 </template>
 
 <script>
+import firebase from 'firebase';
 export default {
   name: "Login",
   data: () => ({
     email: '',
     password: ''
-  })
+  }),
+  methods: {
+    login() {
+      localStorage.logged = true;
+      this.$router.push('/home')
+      firebase
+      .auth()
+      .signInWithEmailAndPassword(this.email, this.password)
+      .then(() => {
+        alert('Successfully logged in');
+        this.$router.push('/home');
+      })
+      .catch(error => {
+        alert(error.message);
+      });
+    },
+  }
 }
 </script>
 
