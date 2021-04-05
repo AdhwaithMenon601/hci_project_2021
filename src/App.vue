@@ -34,7 +34,7 @@
         <v-tab @click="$router.push('/')">
           Home
         </v-tab>
-        <v-tab @click="$router.push('/login')">
+        <v-tab @click="logUser">
           Login
         </v-tab>
         <v-tab @click="$router.push('/signup')">
@@ -50,7 +50,7 @@
     </v-app-bar>
 
     <v-main class="blue lighten-2">
-      <router-view/>
+      <router-view />
     </v-main>
   </v-app>
 </template>
@@ -62,12 +62,17 @@ export default {
   name: 'App',
 
   data: () => ({
-      links: [
-        'About',
-        'Home',
-        'Login',
-        'Sign Up',
-      ],
-    }),
+    links: [
+      'About',
+      'Home',
+      'Login',
+      'Sign Up',
+    ],
+  }),
+  methods: {
+    logUser() {
+      this.$router.push('/login');
+    }
+  }
 };
 </script>
