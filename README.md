@@ -15,6 +15,6 @@ The Unity VR App APK is present as **vr_demo.apk** and can be downloaded and ins
 
 ---
 
-Link for Concept Video: 
+Link for Concept Video: https://drive.google.com/file/d/1IhOEy1d0lOz4t8PO94ApSrn0TvYWklI-/view?usp=sharing
 
 
